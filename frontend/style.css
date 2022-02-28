@@ -1,0 +1,92 @@
+*{
+    padding:0px;
+    margin:0px;
+    font-family: "Exo 2","Helvet";
+}
+
+label{
+    padding:0px;
+    margin:0px; 
+}
+
+header{
+    height:600px;
+    background:url(https://pbs.twimg.com/media/DbPDGVYWsAApE2c.jpg);
+    
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display:grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr;
+    align-items:center;
+    position:relative;
+    padding-left:160px;
+    padding-right: 50px;
+}
+
+header .bkd-color{
+    background-color: hsl(235deg 34% 11%);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    opacity: 0.94;
+}
+
+header * {
+    z-index: 2;
+}
+
+header .team-data{
+    display:flex;
+}
+
+header .team-data img{
+    width:90px;
+}
+
+header section{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+}
+
+header section .name{
+    font-size:26px;
+    font-weight: 700;
+}
+
+header section .flag{
+    display:flex;
+    margin-top:10px;
+    font-size: 13px;
+    color:#97a5e9;
+}
+
+header section .flag > figure{
+    margin-right:10px;
+}
+
+header section .league-name{
+    color:#ffe999;
+}
+
+header .season-list{
+    display:flex;
+    flex-direction: column;
+    height:100%;
+    padding-top:120px;
+}
+
+header .season-list label{
+    font-weight: 700;
+    color:#fff;
+}
+
+header .season-list > .card{
+    height:40px;
+    width:100%;
+    background-color:red;
+}
