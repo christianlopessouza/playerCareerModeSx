@@ -1,0 +1,97 @@
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="script.js"></script>
+
+
+<div class="game-menu">
+    <input input="text" name="playername" placeholder="player name">
+    <select name="position">
+        <option hidden selected>Select..</option>
+        <option value="CB">Center Back</option>
+        <option value="WB">Wing Back</option>
+        <option value="CDM">Center Midfield</option>
+        <option value="MD">Midfield</option>
+        <option value="W">Wingers</option>
+        <option value="ST">Striker</option>
+    </select>
+    <input input="text" name="club" placeholder="youth club">
+    <button>Start</button>
+</div>
+
+<div class="time-line">
+
+</div>
+
+<script>
+$(document).on('click','.next',function(){
+    execSeason(player);
+})
+
+
+$(document).on('click','.game-menu > button',function(){
+    let playerName = $('[name=playername]').val();
+    let clubName = $('[name=club]').val();
+    let playerPosition = $('[name=position]').val();
+    document.querySelector('.game-menu').innerHTML = "";
+
+
+    player = {
+        name: playerName,
+        age: 9,
+        overall: 50,
+        marketValue: 5000.00,
+        position: playerPosition,
+        club: clubName,
+        seasons: {},
+        seasonC: 1,
+        gradeAvg: 1
+    }
+    execSeason(player);
+
+})
+
+function execSeason(player){
+    response = Action(player);  
+    HTML_coiso(response);
+}
+
+function HTML_coiso(retorno){
+    let content = ``;
+    let contentAux = ``;
+
+    console.log(retorno,"tá me tirando")
+    content += `<h2>${retorno.player.name} - ${retorno.player.position}</h2>`; 
+    Object.keys(retorno.player.seasons).forEach(function (season) {
+        console.log(season, "e malboro")
+        content += `
+            <div>
+                <h3>Season ${season}</h3>
+                <p>Club: ${retorno.player.seasons[season].club}</p>
+                <p>Age: ${retorno.player.seasons[season].age}</p>`;
+
+                Object.keys(retorno.player.seasons[season].stats).forEach(function (item) {
+                    content += `<p>${item}: ${retorno.player.seasons[season].stats[item].did}</p>`;
+                });               
+
+        content += `        
+                <p>Level: ${retorno.player.seasons[season].overall}</p>
+            </div><hr>    
+        `;  
+
+        contentAux = content;  
+        
+    });
+    content += `<button class="next">Next Season</button>`;
+
+    contentNew = contentAux + content;
+
+
+
+
+    document.querySelector(".time-line").innerHTML = content;
+
+
+}
+
+
+
+</script>
